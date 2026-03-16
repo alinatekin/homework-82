@@ -1,5 +1,5 @@
 import mongoose, {Types} from "mongoose";
-import Album from "./Album.js";
+import Album from "./Album";
 
 const Schema = mongoose.Schema;
 

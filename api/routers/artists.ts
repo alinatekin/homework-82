@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import Artist from '../models/Artist.js';
+import Artist from '../models/Artist';
 
 const artistsRouter = express.Router();
 
