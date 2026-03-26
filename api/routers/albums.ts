@@ -41,7 +41,7 @@ albumsRouter.get('/', async (req, res) => {
             query = { artist: req.query.artist };
         }
 
-        const albums = await Album.find(query).populate('artist', 'name information');
+        const albums = await Album.find(query).populate('artist', 'name information').sort({ year: -1 });
         res.send(albums);
     } catch (error) {
         res.sendStatus(500);

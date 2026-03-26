@@ -10,6 +10,7 @@ tracksRouter.post('/', async (req, res) => {
             name: req.body.name,
             album: req.body.album,
             duration: req.body.duration,
+            trackNumber: parseInt(req.body.trackNumber),
         };
 
         const track = new Track(trackData);
@@ -35,7 +36,7 @@ tracksRouter.get('/', async (req, res) => {
             query = { album: { $in: albumIds } };
         }
 
-        const tracks = await Track.find(query).populate('album', 'name year');
+        const tracks = await Track.find(query).populate('album', 'name year').sort({ trackNumber: 1 });
         res.send(tracks);
     } catch (error) {
         res.sendStatus(500);
