@@ -1,6 +1,7 @@
 import {AppBar, Container, Toolbar, Typography} from "@mui/material";
 import {Link, Route, Routes} from "react-router-dom";
 import Artists from "./features/artists/Artists.tsx";
+import Albums from "./features/albums/Albums.tsx";
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
               <Container>
                   <Routes>
                       <Route path="/" element={<Artists/>}/>
+                      <Route path="/artists/:id" element={<Albums />}/>
                       <Route path="*" element={<Typography variant="h4" textAlign="center">Not Found</Typography>}/>
                   </Routes>
               </Container>
