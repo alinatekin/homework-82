@@ -10,6 +10,7 @@ export interface Album {
         _id: string;
         name: string;
     };
+    trackCount: number;
 }
 
 export const fetchAlbums = createAsyncThunk<Album[], string>(

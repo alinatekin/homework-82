@@ -50,6 +50,9 @@ const Albums = () => {
                                 <Typography variant="body2" color="text.secondary">
                                     Released: {album.year}
                                 </Typography>
+                                <Typography variant="body2" sx={{ fontWeight: 'bold', mt: 1 }}>
+                                    Tracks: {album.trackCount}
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Grid>

@@ -3,6 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
 import Album from '../models/Album';
+import Track from "../models/Track";
 
 const albumsRouter = express.Router();
 
@@ -42,7 +43,19 @@ albumsRouter.get('/', async (req, res) => {
         }
 
         const albums = await Album.find(query).populate('artist', 'name information').sort({ year: -1 });
-        res.send(albums);
+
+        const albumsWithTrackCount = await Promise.all(
+            albums.map(async (album) => {
+                const trackCount = await Track.countDocuments({ album: album._id });
+
+                return {
+                    ...album.toObject(),
+                    trackCount
+                };
+            })
+        );
+
+        res.send(albumsWithTrackCount);
     } catch (error) {
         res.sendStatus(500);
     }
