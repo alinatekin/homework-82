@@ -29,6 +29,11 @@ const TrackHistorySchema = new Schema({
             message: 'Track does not exist!',
         }
     },
+    artist: {
+        type: Schema.Types.ObjectId,
+        ref: 'Artist',
+        required: true,
+    },
     datetime: {
         type: Date,
         required: true,
