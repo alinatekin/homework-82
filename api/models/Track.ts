@@ -26,6 +26,11 @@ const TrackSchema = new Schema({
         required: true
     },
 
+    youtubeLink: {
+        type: String,
+        required: false,
+    },
+
     duration: {
         type: String,
         required: true

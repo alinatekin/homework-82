@@ -12,6 +12,8 @@ export interface Track {
         name: string;
         year: number;
     };
+
+    youtubeLink?: string;
 }
 
 export const fetchTracks = createAsyncThunk<Track[], string>(

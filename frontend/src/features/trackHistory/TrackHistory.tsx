@@ -44,7 +44,7 @@ const TrackHistory = () => {
                         <Card sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <CardContent>
                                 <Typography variant="h6">
-                                    {item.artist.name} — {item.track.name}
+                                    {item.artist?.name} — {item.track?.name}
                                 </Typography>
                             </CardContent>
                             <CardContent>
