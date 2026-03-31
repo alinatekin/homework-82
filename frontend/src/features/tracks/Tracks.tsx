@@ -1,21 +1,29 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Grid, Typography, CircularProgress, Card, CardContent } from '@mui/material';
+import {Grid, Typography, CircularProgress, Card, CardContent, Box, IconButton} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchTracks } from './tracksThunks';
 import { selectTracks, selectTracksFetching } from './tracksSlice';
+import {selectUser} from "../users/usersSlice.ts";
+import {addTrackToHistory} from "../trackHistory/trackHistoryThunks.ts";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const Tracks = () => {
     const { id } = useParams() as { id: string };
     const dispatch = useAppDispatch();
     const tracks = useAppSelector(selectTracks);
     const isFetching = useAppSelector(selectTracksFetching);
+    const user = useAppSelector(selectUser);
 
     useEffect(() => {
         dispatch(fetchTracks(id));
     }, [dispatch, id]);
 
     const albumName = tracks.length > 0 ? tracks[0].album.name : 'Album Tracks';
+
+    const handlePlay = async (trackId: string) => {
+        await dispatch(addTrackToHistory(trackId));
+    };
 
     return (
         <Grid container spacing={2}>
@@ -50,6 +58,18 @@ const Tracks = () => {
                                     {track.duration}
                                 </Typography>
                             </CardContent>
+
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                <Typography variant="subtitle1" color="text.secondary">
+                                    {track.duration}
+                                </Typography>
+
+                                {user && (
+                                    <IconButton onClick={() => handlePlay(track._id)} color="primary" size="large">
+                                        <PlayArrowIcon fontSize="inherit" />
+                                    </IconButton>
+                                )}
+                            </Box>
                         </Card>
                     </Grid>
                 ))
