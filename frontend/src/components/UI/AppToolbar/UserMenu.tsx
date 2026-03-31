@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import type {User} from "../../../types";
 import {useAppDispatch} from "../../../app/hooks.ts";
 import {logout} from "../../../features/users/usersThunks.ts";
+import { Link } from 'react-router-dom';
 
 interface Props {
     user: User;
@@ -39,7 +40,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
                 onClose={handleClose}
             >
                 <MenuItem>Profile</MenuItem>
-                <MenuItem>Track History</MenuItem>
+                <MenuItem component={Link} to="/track_history" onClick={handleClose}>Track History</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
         </>

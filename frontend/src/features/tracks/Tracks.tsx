@@ -53,11 +53,6 @@ const Tracks = () => {
                                     {track.name}
                                 </Typography>
                             </CardContent>
-                            <CardContent sx={{ '&:last-child': { pb: 2 } }}>
-                                <Typography variant="subtitle1" color="text.secondary">
-                                    {track.duration}
-                                </Typography>
-                            </CardContent>
 
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                 <Typography variant="subtitle1" color="text.secondary">

@@ -55,6 +55,9 @@ export const usersSlice = createSlice({
         builder.addCase(logout.fulfilled, (state) => {
             state.user = null;
         });
+        builder.addCase(logout.rejected, (state) => {
+            state.user = null;
+        });
     }
 });
 
